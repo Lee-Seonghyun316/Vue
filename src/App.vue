@@ -14,11 +14,16 @@
       <!--<button @click="">싫어요</button>-->
     </div>
     <HelloWorld />
+    <div class="small">
+      <chart-test :chart-data="dataCollection"></chart-test>
+      <button @click="fillData()">Randomize</button>
+    </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from "@/components/HelloWorld";
+import ChartTest from "@/ChartTest";
 import { products } from "@/data/products";
 
 export default {
@@ -37,20 +42,45 @@ export default {
         { id: 3, name: "정장원피스", price: 80, like: 2, count: 1 },
       ],
       productsData: products,
+      dataCollection: null,
     };
+  },
+  created() {
+    this.fillData();
   },
   methods: {
     increase(product) {
       product.like += 1;
     },
+    fillData() {
+      this.dataCollection = {
+        labels: [this.getRandomInt(), this.getRandomInt()],
+        datasets: [
+          {
+            label: "Main One",
+            backgroundColor: "red",
+            data: [this.getRandomInt(), this.getRandomInt()],
+          },
+          {
+            label: "Main Two",
+            backgroundColor: "blue",
+            data: [this.getRandomInt(), this.getRandomInt()],
+          },
+        ],
+      };
+      console.log("ChartTestMain", this.dataCollection);
+    },
+    getRandomInt() {
+      return Math.floor(Math.random() * (50 - 4)) + 5;
+    },
   },
-
   components: {
     HelloWorld,
+    ChartTest,
   },
 };
 </script>
-
+.small { max-width: 600px; margin: 150px auto; }
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
