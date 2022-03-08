@@ -49,7 +49,7 @@ export default {
             barPercentage: 0.5,
             barThickness: 6,
             maxBarThickness: 8,
-            label: "테스트 데이터셋",
+            label: "테스트 데이터셋1",
             data: [-8, -10, -6, 8, -10],
             backgroundColor: "#6E3CF9",
             fill: false,
@@ -58,7 +58,7 @@ export default {
             barPercentage: 0.5,
             barThickness: 6,
             maxBarThickness: 8,
-            label: "테스트 데이터셋",
+            label: "테스트 데이터셋2",
             data: [-10, -9, -9, -5, 7],
             backgroundColor: "#FFC24A",
             fill: false,
@@ -66,9 +66,6 @@ export default {
         ],
       },
       options: {
-        // layout: {
-        //   padding: 50
-        // },
         responsive: true,
         title: {
           display: false,
@@ -77,6 +74,7 @@ export default {
         tooltips: {
           mode: "index",
           intersect: false,
+          display: false,
         },
         hover: {
           mode: "nearest",
@@ -90,13 +88,19 @@ export default {
                 display: false,
                 labelString: "x축",
               },
+              min: -10,
+              max: 10,
+              ticks: {
+                display: false,
+                stepSize: 10,
+              },
             },
           ],
           yAxes: [
             {
-              display: true,
+              display: false,
               ticks: {
-                autoSkip: false,
+                display: false,
               },
               scaleLabel: {
                 display: false,
