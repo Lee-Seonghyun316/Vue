@@ -16,7 +16,6 @@
     <HelloWorld />
     <div class="small">
       <chart-test :chart-data="data" :options="options"></chart-test>
-      <button @click="fillData()">Randomize</button>
     </div>
   </div>
 </template>
@@ -44,37 +43,36 @@ export default {
       productsData: products,
       dataCollection: null,
       data: {
-        labels: [
-          "가",
-          "나",
-          "다",
-          "라",
-          "마",
-          "바",
-          "사",
-          "아",
-          "자",
-          "차",
-          "카",
-          "타",
-          "파",
-          "하",
-        ],
+        labels: ["가", "나", "다", "라", "마"],
         datasets: [
           {
+            barPercentage: 0.5,
+            barThickness: 6,
+            maxBarThickness: 8,
             label: "테스트 데이터셋",
-            data: [10, 3, 30, 23, 10, 5, 15, 25, 2, 4, 1, 13, 52, 23],
-            borderColor: "rgba(255, 201, 14, 1)",
-            backgroundColor: "rgba(255, 201, 14, 0.5)",
+            data: [-8, -10, -6, 8, -10],
+            backgroundColor: "#6E3CF9",
+            fill: false,
+          },
+          {
+            barPercentage: 0.5,
+            barThickness: 6,
+            maxBarThickness: 8,
+            label: "테스트 데이터셋",
+            data: [-10, -9, -9, -5, 7],
+            backgroundColor: "#FFC24A",
             fill: false,
           },
         ],
       },
       options: {
+        // layout: {
+        //   padding: 50
+        // },
         responsive: true,
         title: {
-          display: true,
-          text: "막대 차트 테스트",
+          display: false,
+          text: "결과 바 그래프",
         },
         tooltips: {
           mode: "index",
@@ -89,7 +87,7 @@ export default {
             {
               display: true,
               scaleLabel: {
-                display: true,
+                display: false,
                 labelString: "x축",
               },
             },
@@ -101,7 +99,7 @@ export default {
                 autoSkip: false,
               },
               scaleLabel: {
-                display: true,
+                display: false,
                 labelString: "y축",
               },
             },
